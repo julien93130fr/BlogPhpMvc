@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <?php include_once './include/script.php'; ?>
+</head>
+<body>
+<?php include_once './include/menu.php';?>
+   
+
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Titre</th>
+      <th scope="col">Contenu</th>
+      <th scope="col">action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach($articles as $row){ ?>
+    <tr>
+      <td><a href="article_details.php?id=<?php echo $row['id_article']?>"><?php echo $row['titre'];?></td>
+      <td><?php echo $row['contenu'];?></td>
+    
+      <td>
+      <a href="article_update.php?id=<?php echo $row['id_article'] ?>">
+        <span class="btn btn-info fa fa-edit"></span> 
+      </a>
+      <span data-id="<?php echo $row['id_article'] ?>" class="btn btn-danger fa fa-trash"></span> 
+      </td>
+    </tr>
+      <?php }  ?>
+      </tbody>
+      </table>
+ 
+</body>
+</html>
+
+<script>
+  // permet d attendre le chargement complet de la page
+document.addEventListener("DOMContentLoaded", function() {
+  // detection de tous les elements html contenant la class fa-trash
+  let btn = document.querySelectorAll('.fa-trash');
+  // boucle sur tous ces elements 
+  btn.forEach((elem) => {
+    // j ajoute une evenement sur chaque bouton qui a la classe fa-trash
+    elem.addEventListener('click', function(e) {
+
+      console.log(e.currentTarget.dataset.id);
+      // demande de confirmation a l' utilisateur
+      if(confirm('etes vous sur de vouloir supprimer ?')){
+        document.location.href = './article_delete.php?id=' + e.currentTarget.dataset.id;
+      }
+    });
+  });
+});
+</script>
+

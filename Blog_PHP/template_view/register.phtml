@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>connexion</title>
+    <?php include_once './include/script.php'; ?>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #009B3A;
+            color: #fff;
+            font-family: "Arial", sans-serif;
+        }
+        .container {
+            margin-top: 150px;
+            max-width: 400px;
+        }
+        .container h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-control {
+            background-color: #fff;
+            color: #009B3A;
+        }
+        input[type="submit"] {
+            background-color: #FFCC29;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #FFAD00;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+    
+<?php include_once './include/menu.php'; ?>
+
+<!--
+<div class="container">
+    <h1>inscription</h1>
+    <form action=""register.php method="POST" >
+        <label for="">Email</label>
+        <input type="text" name="email" class="form-control">
+        <label for="">Mot de passe </label>
+        <input type="password" name="password" id="" class="form-control">
+        <label for="">Merci de ressaissir votre mot de passe</label>
+        <input type="password" name="password2" id="" class="form-control">
+        <input type="submit" value="inscription" />
+    </form>
+</div>
+    -->
+    
+<div class="container">
+        <h1>Inscription</h1>
+        <form action="register.php" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password2">Merci de ressaisir votre mot de passe</label>
+                <input type="password" name="password2" class="form-control" required>
+            </div>
+            <input type="submit" value="Inscription">
+        </form>
+    </div>
+    <!-- Inclusion du fichier JavaScript Bootstrap (facultatif) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+    
+</body>

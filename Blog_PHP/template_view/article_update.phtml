@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <?php include_once './include/script.php'; ?>
+</head>
+<body>
+    <div class="container">
+        <!-- on ajoute le multiformdata pour envoyer le fichier  -->
+    <form action="article_update.php?id=<?php echo $article->id_article; ?>" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="id" value="<?php echo $article->id_article; ?>" />
+
+        <label for="">Titre</label>
+        <input class="form-control" value="<?php echo $article->titre; ?>" name="titre" id="titre" placeholder=" attente d' ecriture">
+        <br />
+        <label>Contenu</label>
+        <textarea  class="form-control"  name="contenu" id="" cols="30" rows="10">
+             <?php echo $article->contenu; ?>
+        </textarea>
+        <br />
+        <label>Photo</label>
+        <input class="form-control"  type="file" name="photo" accept="image/jpeg">
+        <br />
+        <label for="">Vidéo</label>
+        <input class="form-control" value="<?php echo $article->video; ?>" type="text" name="video">
+        <br />
+        <label for="">Auteur</label>
+        <select name="id_auteur" class="form-control " >
+            <?php foreach ($authorList as $row){ ?>
+                <!--Si l'id_auteur contenu dans l'article est égale a l'id_auteur dans la boucle en cours-->
+                <?php if($article->id_auteur == $row->id_auteur){ ?>
+                    <!--Alors on affiche le selected-->
+                 <option selected="selected" value="<?php echo $row->id_auteur; ?>"><?php echo $row->nom . ' ' . $row->prenom; ?></option>
+                 <?php  }else{ ?>
+                <!--sinon on affiche l'option mais sans le selected-->
+                <option value="<?php echo $row->id_auteur; ?>"><?php echo $row->nom . ' ' . $row->prenom; ?></option>
+                <?php } ?>
+            <?php } ?>
+        </select>
+                   
+        <br /> 
+            <?php foreach( $categoryList  as $row) { 
+               
+                $string = '';
+                if(in_array($row->id_categorie, $tabIdCategoryArticle)){
+                    $string = 'checked';
+
+                }
+               ?>
+                <input <?php echo $string; ?> type="checkbox" name="category[]" value="<?php echo $row->id_categorie; ?>">
+                <?php echo $row->nom; ?>
+          <br>
+                <?php } ?>
+
+       
+        <input type="submit" value="Modifier">
+    </form>
+    </div>
+</body>
+</html>

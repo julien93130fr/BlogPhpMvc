@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <?php include_once './include/script.php'; ?>
+</head>
+<body>
+<?php include_once './include/menu.php';?>
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><id_auteur></th>
+      <th scope="col">nom</th>
+      <th scope="col">prenom</th>
+      <th scope="col">date_de_naissance</th>
+      <th scope="col">email</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach($auteurs as $row){ ?>
+    <tr>
+      <th scope="col"><?php echo $row->id_auteur?></th>
+      <td> <?php echo $row->nom; ?></td>
+      <td> <?php echo $row->prenom; ?></td>
+      <td> <?php echo $row->date_de_naissance;?></td>
+      <td> <?php echo $row->email;?></td>
+      </tr>
+      <?php }  ?>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <?php include_once './include/script.php'; ?>
+</head>
+<body>
+    <?php include_once './include/menu.php'; ?>
+    <div class="container">
+        <!-- on ajoute le multiformdata pour envoyer le fichier  -->
+    <form action="article_new.php" method="post" enctype="multipart/form-data">
+        <label for="">Titre</label>
+        <input class="form-control" name="titre" id="titre" placeholder=" attente d' ecriture">
+        <br />
+        <label for="">Contenu</label>
+        <textarea  class="form-control"  name="contenu" id="" cols="30" rows="10"></textarea>
+        <br />
+        <label for="">Photo</label>
+        <input class="form-control"  type="file" name="photo" accept="image/jpeg">
+        <br />
+        <label for="">Vidéo</label>
+        <input class="form-control"  type="text" name="video">
+        <br />
+        <label for="">Auteur</label>
+        <select name="id_auteur" class="form-control " >
+            <?php foreach ($authorList as $row){ ?>
+            <option class="form-control"   value="<?php echo $row->id_auteur; ?>"><?php echo $row->nom . '' .$row->prenom ;?>
+            <?php } ?>
+        </select>
+        <br />
+        <?php foreach($categoryList as $row){?>
+        <input type="checkbox" name="category[]" id="" value="<?php echo $row->id_categorie; ?>"/> <?php echo $row->nom; ?><br />
+        <?php } ?>
+        <input  class="btn btn-primary"   type="submit" value="Envoyer le formulaire pour le blog">
+
+    </form>
+    </div>
+</body>
+</html>
